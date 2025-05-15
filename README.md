@@ -25,13 +25,13 @@ sudo apt install apache2
 
 ```
 
-2. Install MySQL
+### 2. Install MySQL
 
 ```bash
 sudo apt install mysql-server
 ```
 
-3. Install PHP
+### 3. Install PHP
 
 ```bash
 sudo apt install php libapache2-mod-php php-mysql
@@ -45,7 +45,7 @@ Copyright (c) The PHP Group
 Zend Engine v4.1.2, Copyright (c) Zend Technologies
     with Zend OPcache v8.1.2-1ubuntu2.21, Copyright (c), by Zend Technologies
 ```
-🔧 Apache Configuration (Optional)
+### 🔧 Apache Configuration (Optional)
 By default, when Apache is asked to load a directory (e.g., yourdomain.com/), it checks for certain index files in a specific order — usually starting with index.html.
 
 Since we’re building a PHP-based site, we want Apache to prioritize index.php instead. This ensures your PHP application loads properly, even if there's also an index.html file in the same folder.
@@ -68,7 +68,7 @@ Finally, reload Apache to apply the change:
 sudo systemctl restart apache2
 ```
 
-🧪 Testing PHP
+### 🧪 Testing PHP
 Create a test PHP page:
 ```bash
 sudo nano /var/www/html/info.php
