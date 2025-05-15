@@ -24,6 +24,10 @@ sudo apt update
 sudo apt install apache2
 
 ```
+Place index.html file at:
+```bash
+/var/www/html/index.html
+```
 
 ### 2. Install MySQL
 
@@ -50,12 +54,12 @@ By default, when Apache is asked to load a directory (e.g., yourdomain.com/), it
 
 Since we’re building a PHP-based site, we want Apache to prioritize index.php instead. This ensures your PHP application loads properly, even if there's also an index.html file in the same folder.
 
-To adjust this behavior, open the directory index configuration file:
+### To adjust this behavior, open the directory index configuration file:
 ```bash
 sudo vim /etc/apache2/mods-enabled/dir.conf
 ```
 
-Inside this file, update the DirectoryIndex line so index.php appears first:
+### Inside this file, update the DirectoryIndex line so index.php appears first:
 ```bash
 <IfModule mod_dir.c>
     DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
@@ -80,10 +84,63 @@ phpinfo();
 ?>
 ```
 ِDefault PHP web page:
-![Image](https://github.com/mehdi-khaksari/lamp-php-todo-app-ubuntu/issues/1)
+
+<p align="center">
+  <a name="top" href="#">
+     <img alt="xshin404/lampTermux" height="60%" width="100%" src="https://github.com/mehdi-khaksari/lamp-php-todo-app-ubuntu/blob/main/images/info.php.png"/>
+  </a>
+</p>
 
 
 
+### 🗄️ MySQL Setup
+```bash
+sudo mysql
+```
+### Run:
+```bash
+CREATE DATABASE phptest;
+CREATE USER 'php_user'@'%' IDENTIFIED BY '123';
+GRANT ALL ON phptest.* TO 'php_user'@'%';
+FLUSH PRIVILEGES;
+```
+
+### Create the table and insert a test item:
+
+```bash
+USE phptest;
+
+CREATE TABLE todo_list (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    content VARCHAR(255)
+);
+
+INSERT INTO todo_list (content) VALUES ("My first task");
+```
+
+### 📜 PHP Application Code (todo_list.php)
+
+Place todo_list.php file at:
+```bash
+/var/www/html/todo_list.php
+```
+
+
+### ✅ Final Testing
+Visit:
+
+http://localhost/ — landing page
+
+http://localhost/info.php — PHP test
+
+http://localhost/todo_list.php — database-backed task list
+
+
+
+# 📬 Contact
+Feel free to fork, improve, and contribute!
+Author: mehdi khaksari
+Email: mahdikhaksari36@gmail.com
 
 
 
